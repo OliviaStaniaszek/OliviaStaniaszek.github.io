@@ -5,11 +5,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+.project-item {
+  position: relative;
+}
+
+.square-container {
+  position: relative;
+  width: 100%;
+  max-width: 300px; /* Set a maximum width for the square container */
+  padding-bottom: 100%; /* Create a square aspect ratio */
+  overflow: hidden;
+  background-color: black;
+}
+
+.project-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Preserve aspect ratio without cropping */
+}
+
 </style>
 </head>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
@@ -52,143 +76,32 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   </header>
 
   <!------------tabs --------------->
-    <div class="w3-bar w3-black">
-      <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Design')">Design</button>
-      <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Coding')">Coding</button>
-      <!-- <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'UX')">UX</button> -->
-      <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Arduino')">Arduino</button>
-      <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Art')">Art</button>
-    </div>
 
-  <!-- design -->
+  <div class="w3-bar w3-black">
+    <button class="w3-bar-item w3-button tablink w3-red" onclick="filterProjects('All')">All</button>
+    <button class="w3-bar-item w3-button tablink" onclick="filterProjects('Coding')">Coding</button>
+    <button class="w3-bar-item w3-button tablink" onclick="filterProjects('GameDevelopment')">Game Development</button>
+    <button class="w3-bar-item w3-button tablink" onclick="filterProjects('Blender')">Blender</button>
+    <button class="w3-bar-item w3-button tablink" onclick="filterProjects('Design')">Design</button>
+    <button class="w3-bar-item w3-button tablink" onclick="filterProjects('UX/UI')">UX/UI</button>
+    <button class="w3-bar-item w3-button tablink" onclick="filterProjects('Web')">Web</button>
+  </div>
+  
       
-
-      <!-- <div class="w3-row-padding">  -->
-
-        <div id="Design" class="w3-container city">
-          <h2>Design</h2>
-          <!-- First Photo Grid-->
-          <div class="w3-row-padding"> 
-            
-
-            <div class="w3-third w3-container w3-margin-bottom tab" id="carpeggia">
-              <img onclick="document.getElementById('id03').style.display='block'" src="imgs/carpeggia.png" alt="Column" style="width:100%" class="w3-hover-grayscale">
-              <div class="w3-container w3-white">
-                <p><b>Carpeggia - Lower body rain protection</b><span class="w3-text-red"> (2022)</span></p>
-                <p><span class="w3-tag">Wearable</span> <span class="w3-tag">Design</span> <span class="w3-tag">Clothing</span> <span class="w3-tag">Group Project</span></p>
-              </div>
-            </div>
-
-            <div class="w3-third w3-container w3-margin-bottom tab" id="portfolio">
-              <img onclick="document.getElementById('id19').style.display='block'" src="imgs/portfolio/Slide1.PNG" alt="Dragon" style="width:100%" class="w3-hover-grayscale">
-              <div class="w3-container w3-white">
-                <p><b>Year 1 Design Portfolio</b><span class="w3-text-red"> (2022)</span></p>
-                <p><span class="w3-tag">Portfolio</span> <span class="w3-tag">Design</span></p>
-              </div>
-            </div>
-        
-            <div class="w3-third w3-container w3-margin-bottom tab" id="dragon">
-              <img onclick="document.getElementById('id01').style.display='block'" src="imgs/dragon 1.png" alt="Dragon" style="width:100%" class="w3-hover-grayscale">
-              <div class="w3-container w3-white">
-                <p><b>Interlocking Wooden Dragon</b><span class="w3-text-red"> (2022)</span></p>
-                <p><span class="w3-tag">Wood</span> <span class="w3-tag">Design</span></p>
-              </div>
-            </div>
-
-        <div class="w3-row-padding"> 
-          <div class="w3-third w3-container w3-margin-bottom tab" id="column">
-            <img onclick="document.getElementById('id02').style.display='block'" src="imgs/columnfinal.PNG" alt="Column" style="width:100%" class="w3-hover-grayscale">
-            <div class="w3-container w3-white">
-              <p><b>Paper Water Lily Column</b><span class="w3-text-red"> (2021)</span></p>
-              <p><span class="w3-tag">Paper</span> <span class="w3-tag">Design</span></p>
-            </div>
-          </div>
-
-        
-          <div class="w3-third w3-container w3-margin-bottom tab" id="pterodactyl">
-            <img onclick="document.getElementById('id09').style.display='block'" src="imgs/pterodactyl.png"  style="width:100%" class="w3-hover-grayscale">
-            <div class="w3-container w3-white">
-              <p><b>Paper Pterodactyl</b><span class="w3-text-red"> (2021)</span></p>
-              <p><span class="w3-tag">Paper</span> <span class="w3-tag">Design</span></p>
-            </div>
-          </div>
-
+      <div class="container">
+        <div class="row" id="projectContainer">
+          <!-- Generated project items go here -->
         </div>
-        </div>
-      </div> <!-- end design -->
+      </div>
+
+      <div id="modalsContainer"></div>
+      
+      
     
-  <!-- coding -->
-      <div id="Coding" class="w3-container city" style="display:none">
-        <h2>Coding</h2>
-        <div class="w3-row-padding"> 
-          <div class="w3-third w3-container w3-margin-bottom tab" id="farmerapp">
-            <img onclick="document.getElementById('id21').style.display='block'" src="imgs/farmer app border.png"  style="width:100%" class="w3-hover-grayscale">
-            <div class="w3-container w3-white">
-              <p><b>Weather App for Farmers</b><span class="w3-text-red"> (2023)</span></p>
-              <p><span class="w3-tag">Coding</span> <span class="w3-tag">Preact</span> <span class="w3-tag">HTML, CSS, JS</span> <span class="w3-tag">Group project</span></p>
-            </div>
-          </div>
-
-          <div class="w3-third w3-container w3-margin-bottom tab" id="dragon">
-            <img onclick="document.getElementById('id05').style.display='block'" src="imgs/taking charge.png"  style="width:100%;" class="w3-hover-grayscale">
-            <div class="w3-container w3-white">
-              <p><b>Taking Charge</b><span class="w3-text-red"> (2022)</span></p>
-              <p><span class="w3-tag">Coding</span> <span class="w3-tag">HTML, CSS, JS</span> <span class="w3-tag">Object Oriented</span> <span class="w3-tag">Group project</span></p>
-            </div>
-          </div>
-
-          <div class="w3-third w3-container w3-margin-bottom tab" id="dragon">
-            <img onclick="document.getElementById('id06').style.display='block'" src="imgs/airlinesafety .png"  style="width:100%" class="w3-hover-grayscale">
-            <div class="w3-container w3-white">
-              <p><b>Airline Safety Data Visualisation</b><span class="w3-text-red"> (2021)</span></p>
-              <p><span class="w3-tag">Coding</span> <span class="w3-tag">Processing</span> <span class="w3-tag">Object Oriented</span></p>
-            </div>
-          </div>
-
-          <div class="w3-third w3-container w3-margin-bottom tab" id="dragon">
-            <img onclick="document.getElementById('id07').style.display='block'" src="imgs/mastermind sq.png"  style="width:100%" class="w3-hover-grayscale">
-            <div class="w3-container w3-white">
-              <p><b>Mastermind Game</b><span class="w3-text-red"> (2022)</span></p>
-              <p><span class="w3-tag">Coding</span> <span class="w3-tag">Processing</span> <span class="w3-tag">Game</span></p>
-            </div>
-          </div>
-
-          <div class="w3-third w3-container w3-margin-bottom tab" id="dragon">
-            <img onclick="document.getElementById('id08').style.display='block'" src="imgs/noughts and crosses.png"  style="width:100%" class="w3-hover-grayscale">
-            <div class="w3-container w3-white">
-              <p><b>Noughts & Crosses</b><span class="w3-text-red"> (2021)</span></p>
-              <p><span class="w3-tag">Coding</span> <span class="w3-tag">Python</span> <span class="w3-tag">Game</span> <span class="w3-tag">Pygame</span></p>
-            </div>
-          </div>
 
 
-
-
-
-        </div>
-      </div> <!-- end coding -->
-
-  <!-- UX UI -->
-      <!-- <div id="UX" class="w3-container city" style="display:none">
-        <h2>UX/UI</h2>
-      </div> end UI -->
-      
-  <!-- Arduino -->
-      <div id="Arduino" class="w3-container city" style="display:none">
-        <h2>Arduino</h2>
-        <div class="w3-row-padding">
-          <div class="w3-third w3-container w3-margin-bottom tab" id="parrot">
-              <img onclick="document.getElementById('id04').style.display='block'" src="imgs/parrot.png" alt="Column" style="width:100%" class="w3-hover-grayscale">
-            <div class="w3-container w3-white">
-              <p><b>Parrot Theatrical Prop</b><span class="w3-text-red"> (2022)</span></p>
-              <p><span class="w3-tag">Arduino</span> <span class="w3-tag">Interactive</span> <span class="w3-tag">Group Project</span></p>
-            </div>
-          </div>
-        </div>
-      </div> <!-- end arduino -->
-      
   <!-- Art -->
-  <div id="Art" class="w3-container city" style="display:none">
+  <div id="Art" class="w3-container project" style="display:none">
     <h2>Art</h2>
       <div class="w3-row-padding">
         <div class="w3-third w3-container w3-margin-bottom tab" id="carpeggia">
@@ -288,288 +201,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     
 
   <!-------------- modals (pop up pages)------------>
-      <!-- dragon  1-->
-    <div id="id01" class="w3-modal" style="padding-top: 2%;">
-      <div class="w3-modal-content">
-          <div class="w3-container w3-card w3-white w3-margin-bottom">
-              <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
-              <h2 class="w3-text-grey w3-padding-16">Interlocking Wooden Dragon</h2>
-              <h6 class="w3-text-red">Jan 2022 - May 2022</h6>
-              <div class="w3-container">
-              <h5 class="w3-opacity"><b>Brief</b></h5>
-              <ul>
-                <li>Design a plain object which uses an interlocking mechanism</li>
-                <li>Made out of wood</li>
-                <li>Less than 300mm x 150mm x 150mm</li>
-              </ul>
-              <h5 class="w3-opacity">Response</h5>
-              <p>
-              A carved dragon head made out of wood in two pieces, a skull and a head. Inspired by slide release buckles. Designed to be satisfying to play with and hold</p>
-              <div class="w3-third w3-container w3-margin-bottom">
-                  <img src="imgs/dragon 2.png" alt="Dragon" style="width:100%">
-                  <p>Ideation and Mockups</p>
-              </div>
-              <div class="w3-third w3-container w3-margin-bottom">
-                  <img src="imgs/dragon 3.png" alt="Dragon" style="width:100%">
-                  <p>Prototypes and Design</p>
-              </div>
-              <div class="w3-third w3-container w3-margin-bottom">
-                  <img src="imgs/dragon 4.png" alt="Dragon" style="width:100%">
-                  <p>Final Design</p>
-              </div>
-              </div>
-              
-              </div>
-          </div>
-      </div>
-
-    <!-- column 2-->
-    <div id="id02" class="w3-modal" style="padding-top: 2%;">
-        <div class="w3-modal-content">
-            <div class="w3-container w3-card w3-white w3-margin-bottom">
-                <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
-                <h2 class="w3-text-grey w3-padding-16">Paper Water Lily Column</h2>
-                <h6 class="w3-text-red">Sept 2021 - Oct 2022</h6>
-                <div class="w3-container">
-                <h5 class="w3-opacity"><b>Brief</b></h5>
-                <p>Make a three dimensional object, an artefact more like a piece of art, a personal response, expressing the idea of a column</p>
-                <h5 class="w3-opacity">Response</h5>
-                <p>A column made entirely out of paper and cardboard made to look like a water lily and lily pads. Inspired by Ancient Egyptian columns and the lily pads in my pond at home</p>
-                <div class="w3-third w3-container w3-margin-bottom">
-                    <img src="imgs/column1.PNG" style="width:100%">
-                    <p>Ideation and Sketches</p>
-                </div>
-                <div class="w3-third w3-container w3-margin-bottom">
-                    <img src="imgs/column2.PNG" style="width:100%">
-                    <p>Prototypes</p>
-                </div>
-                <div class="w3-third w3-container w3-margin-bottom">
-                    <img src="imgs/column3.PNG" style="width:100%">
-                    <p>Final Design</p>
-                </div>
-                </div>
-                
-                </div>
-            </div>
-      </div>
-
-    <!-- carpeggia 3-->
-    <div id="id03" class="w3-modal" style="padding-top: 2%;">
-        <div class="w3-modal-content">
-            <div class="w3-container w3-card w3-white w3-margin-bottom">
-                <span onclick="document.getElementById('id03').style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
-                <h2 class="w3-text-grey w3-padding-16">Carpeggia - Lower body rain protection</h2>
-                <h6 class="w3-text-red">Oct 2022 - Dec 2022</h6>
-                <div class="w3-container">
-                <h5 class="w3-opacity"><b>Brief</b></h5>
-                <p>Design an artefact to protect from wind and/or rain</p>
-                <h5 class="w3-opacity">Response</h5>
-                <p>A lower body garment made from old raincoats. Inspired by Japanese Samurai Armour. Aim to allow the user to maintain their stylish outfit, without having to cover it with a long raincoat.</p>
-                <div class="w3-third w3-container w3-margin-bottom">
-                    <img src="imgs/carpeggia stylish.png" style="width:100%">
-                    <p>Illustrations</p>
-                </div>
-                <div class="w3-third w3-container w3-margin-bottom">
-                    <img src="imgs/carpeggia streetware.png" style="width:100%">
-                    <p>Illustrations</p>
-                </div>
-                <div class="w3-third w3-container w3-margin-bottom">
-                    <img src="imgs/carpeggia.png"  style="width:100%">
-                    <p>Final Design</p>
-                </div>
-                </div>
-            </div>
-        </div>
-      </div>
-
-    <!-- pterodactyl 9-->
-    <div id="id09" class="w3-modal" style="padding-top: 2%;">
-    <div class="w3-modal-content">
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
-            <span onclick="document.getElementById('id09').style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
-            <h2 class="w3-text-grey w3-padding-16">Paper Flying Pterodactyl</h2>
-            <h6 class="w3-text-red">Nov 2021 - Dec 2021</h6>
-            <div class="w3-container">
-            <h5 class="w3-opacity"><b>Brief</b></h5>
-            <ul>
-              <li>Design a flying object. Your final product should have the quality of an off-the-shelf product</li>
-              <li>Made out of one sheet of A3 paper/ 2 A4 sheets</li>
-              <li>You can cut and bond but no power or heat is allowed </li>
-              <li>The final outcome must fly</li>
-            </ul>
-            <h5 class="w3-opacity">Response</h5>
-            <p>A DIY flying paper Pterodactyl to be sold at museum gift shops for children</p>
-            <div class="w3-third w3-container w3-margin-bottom">
-                <img src="imgs/pterodactyl 2.png" style="width:100%">
-                <p>Mockups and Prototypes</p>
-            </div>
-            <div class="w3-third w3-container w3-margin-bottom">
-                <img src="imgs/pterodactyl 3.png" style="width:100%">
-                <p>Packaging and flatpack</p>
-            </div>
-            <div class="w3-third w3-container w3-margin-bottom">
-                <img src="imgs/pterodactyl.png" style="width:100%">
-                <p>Final Design</p>
-            </div>
-            </div>
-            
-            </div>
-        </div>
-      </div>
-
-    <!-- parrot 4-->
-    <div id="id04" class="w3-modal" style="padding-top: 2%;">
-        <div class="w3-modal-content">
-            <div class="w3-container w3-card w3-white w3-margin-bottom">
-                <span onclick="document.getElementById('id04').style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
-                <h2 class="w3-text-grey w3-padding-16">Parrot Theatrical Prop</h2>
-                <h6 class="w3-text-red">Nov 2022 - Dec 2022</h6>
-                <div class="w3-container">
-                <h5 class="w3-opacity"><b>Brief</b></h5>
-                <p>Make a user controlled theatrical prop using an Arduino</p>
-                <h5 class="w3-opacity">Response</h5>
-                <p>A Macaw parrot with flapping wings and a speaker. User can control wing flapping speed and activate bird sounds with a button.</p>
-                <p>Full documentation can be found <a href="https://cio.eecs.qmul.ac.uk/portfolio/group-5-parrot-theatrical-prop/" class="w3-tag w3-red w3-round">here</a></p>
-                <div class="w3-third w3-container w3-margin-bottom">
-                    <img src="imgs/parrot1.png" style="width:100%">
-                    <p>Sketches</p>
-                </div>
-                <div class="w3-third w3-container w3-margin-bottom">
-                    <img src="imgs/parrot2.png" style="width:100%">
-                    <p>Making</p>
-                </div>
-                <div class="w3-third w3-container w3-margin-bottom">
-                    <img src="imgs/parrot.png" style="width:100%">
-                    <p>Final Design</p>
-                </div>
-            </div>
-        </div>
-        </div>
-      </div>
-
-    <!-- taking charge 5-->
-    <div id="id05" class="w3-modal" style="padding-top: 2%;">
-      <div class="w3-modal-content">
-          <div class="w3-container w3-card w3-white w3-margin-bottom">
-              <span onclick="document.getElementById('id05').style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
-              <h2 class="w3-text-grey w3-padding-16">Taking Charge - GCSE Physics Circuit Simulator</h2>
-              <h6 class="w3-text-red">Nov 2022 - Dec 2022</h6>
-              <div class="w3-container">
-              <h5 class="w3-opacity"><b>Brief</b></h5>
-              <p>Make a learning application</p>
-              <h5 class="w3-opacity">Response</h5>
-              <p>An online circuit simulator website aimed at teaching GCSE Physics students about circuits. The user drags and drops circuit components into the circuit to complete the circuit and achieve the correct current.</p>
-              <p><a href="https://oliviastaniaszek.github.io/Taking-Charge/" class="w3-tag w3-red w3-round">Try it out!</a></p>
-              <p>GitHub page can be found <a href="https://github.com/OliviaStaniaszek/Taking-Charge">here</a></p>
-              <div class="w3-half w3-container w3-margin-bottom">
-                  <img src="imgs/taking chage1.png" style="width:100%">
-                  <p>'Game' screen</p>
-              </div>
-              <div class="w3-half w3-container w3-margin-bottom">
-                  <img src="imgs/taking charge 2.png" style="width:100%">
-                  <p>Incorrect answer</p>
-              </div>
-              <div class="w3-half w3-container w3-margin-bottom">
-                  <img src="imgs/taking charge 3.png" style="width:100%">
-                  <p>Correct answer (with diagram components option)</p>
-              </div>
-              <div class="w3-half w3-container w3-margin-bottom">
-                <img src="imgs/taking charge.png" style="width:100%">
-                <p>Menu</p>
-            </div>
-          </div>
-      </div>
-      </div>
-      </div>
-
-    <!-- airline safety 6-->
-    <div id="id06" class="w3-modal" style="padding-top: 2%;">
-      <div class="w3-modal-content">
-          <div class="w3-container w3-card w3-white w3-margin-bottom">
-              <span onclick="document.getElementById('id06').style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
-              <h2 class="w3-text-grey w3-padding-16">Airline Safety - Data visualisation</h2>
-              <h6 class="w3-text-red">Dec 2021</h6>
-              <div class="w3-container">
-                <p>A data visualisation made in Processing (Java) displaying data from a CSV in an interactive format.</p>
-                <p>GitHub page can be found <a href="https://github.com/OliviaStaniaszek/Airline-Safety-data-representation-coursework-AAP/tree/main">here</a></p>
-                <div class="w3-row-padding">
-                  <div class="w3-half w3-container w3-margin-bottom">
-                      <img src="imgs/airlinesafety 2.png" style="width:100%">
-                      <p>Line graph comparison with line widths</p>
-                  </div>
-                  <div class="w3-half w3-container w3-margin-bottom">
-                      <img src="imgs/airlinesafety 3.png" style="width:100%">
-                      <p>Bar charts</p>
-                  </div>
-                </div>
-                <div class="w3-row-padding">
-                  <div class="w3-half w3-container w3-margin-bottom">
-                      <img src="imgs/airlinesafety `.png" style="width:100%">
-                      <p>Selected airlines only</p>
-                  </div>
-                  <div class="w3-half w3-container w3-margin-bottom">
-                    <img src="imgs/airlinesafety .png" style="width:100%">
-                    <p>Menu</p>
-                  </div>
-                </div>
-            </div>
-      </div>
-      </div>
-      </div>
-
-    <!-- mastermind 7-->
-    <div id="id07" class="w3-modal" style="padding-top: 2%;">
-      <div class="w3-modal-content">
-          <div class="w3-container w3-card w3-white w3-margin-bottom">
-              <span onclick="document.getElementById('id07').style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
-              <h2 class="w3-text-grey w3-padding-16">Mastermind game</h2>
-              <h6 class="w3-text-red">Jul 2022</h6>
-              <div class="w3-container">
-              <p>Simple game of mastermind made in Processing (Java). User inputs guesses using numbers 1-6 and aims to guess in 5 guesses. Time taken is added to CSV for scoreboard</p>
-              <p>GitHub page can be found <a href="https://github.com/OliviaStaniaszek/Mastermind-game/tree/main">here</a></p>
-              <div class="w3-third w3-container w3-margin-bottom">
-                  <img src="imgs/mastermind.png" style="width:100%">
-                  <p>Main menu</p>
-              </div>
-              <div class="w3-third w3-container w3-margin-bottom">
-                  <img src="imgs/mastermind 2.png" style="width:100%">
-                  <p>Game</p>
-              </div>
-              <div class="w3-third w3-container w3-margin-bottom">
-                  <img src="imgs/mastermind 3.png" style="width:100%">
-                  <p>Scoreboard</p>
-              </div>
-          </div>
-      </div>
-      </div>
-    </div>
-
-  <!-- noughts & crosses 8-->
-  <div id="id08" class="w3-modal" style="padding-top: 2%;">
-    <div class="w3-modal-content">
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
-            <span onclick="document.getElementById('id08').style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
-            <h2 class="w3-text-grey w3-padding-16">Noughts & Crosses Game</h2>
-            <h6 class="w3-text-red">Aug 2021</h6>
-            <div class="w3-container">
-            <p>Simple 2 player game of Noughts & Crosses made using Python and Pygame. User input through number keys or mouse clicks.</p>
-            <p>GitHub page can be found <a href="https://github.com/OliviaStaniaszek/Noughts-Crosses-game">here</a></p>
-            <div class="w3-third w3-container w3-margin-bottom">
-                <img src="imgs/noughts and crosses(1).png" style="width:100%">
-                <p>Game screen</p>
-            </div>
-            <div class="w3-third w3-container w3-margin-bottom">
-                <img src="imgs/noughts and crosses(3).png" style="width:100%">
-                <p>Light mode</p>
-            </div>
-            <div class="w3-third w3-container w3-margin-bottom">
-                <img src="imgs/noughts and crosses(4).png" style="width:100%">
-                <p>How to play (light mode)</p>
-            </div>
-        </div>
-    </div>
-    </div>
-  </div>
 
   <!-- art -->
   <!-- the band 10-->
@@ -848,14 +479,484 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </div>
   </div>
 
-  <!-- design yr 1 portfolio 19 -->
-  <div id="id19" class="w3-modal" style="padding-top: 2%;">
-    <div class="w3-modal-content">
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
-          <span onclick="document.getElementById('id19').style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
-          <h2 class="w3-text-grey w3-padding-16">Design Year 1 Portfolio</h2>
-          <h6 class="w3-text-red">Aug 2022</h6>
-          <div class="w3-container">
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-8 w3-dark-grey">
+    <div class="w3-row-padding">
+        <h3>Contact me</h3>
+        <div class="w3-quarter">
+            <p><i class="fa fa-envelope w3-text-light-grey"></i> <a href="mailto:o.staniaszek3@gmail.com">o.staniaszek3@gmail.com</a></p>
+        </div>
+        <div class="w3-quarter">
+            <p><i class="fa fa-phone w3-text-light-grey"></i> +447838534255</p>
+        </div>
+        <div class="w3-quarter">
+            <p><i class="fa fa-linkedin w3-hover-opacity"></i> <a href="https://www.linkedin.com/in/olivia-staniaszek-b0b290227/?original_referer=">Olivia Staniaszek</a></p>
+        </div>
+        <div class="w3-quarter">
+            <p><i class="fa fa-github"></i> <a href="https://github.com/OliviaStaniaszek">OliviaStaniaszek</a></p>
+        </div>
+    </div>
+    </footer>
+
+<!-- End page content -->
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+const projects = [
+    //--------------- design -------------------
+    {
+        id: 'portfolio23',
+        imgSrc: 'imgs/portfolio 2023/1.png',
+        title: 'Year 2 Design Portfolio',
+        year: '2023',
+        tags: ['Design','Portfolio'],
+        category: ['Design'],
+        modalId: 'portfolio23',
+        date: '2023-05-23'
+    },
+    {
+        id: 'drawingmodel',
+        imgSrc: 'imgs/portfolio 2023/9.png',
+        title: 'Drawing Model',
+        year: '2023',
+        tags: ['Design'],
+        category: ['Design'],
+        modalId: 'drawingmodel',
+        date: '2023-04-05'
+    },
+    {
+        id: 'carpeggia',
+        imgSrc: 'imgs/portfolio 2023/3.png',
+        title: 'Carpeggia - Lower body rain protection',
+        year: '2022',
+        tags: ['Design', 'Wearables', 'Group Project'],
+        category: ['Design'],
+        modalId: 'carpeggia',
+        date: '2022-12-01'
+    },
+    {
+        id: 'portfolio22',
+        imgSrc: 'imgs/portfolio/Slide1.PNG',
+        title: 'Year 1 Design Portfolio',
+        year: '2022',
+        tags: ['Design', 'Portfolio'],
+        category: ['Design'],
+        modalId: 'portfolio22',
+        date: '2022-05-23'
+    },
+    {
+        id: 'dragon',
+        imgSrc: 'imgs/dragon 1.png',
+        title: 'Interlocking Wooden Dragon',
+        year: '2022',
+        tags: ['Wood', 'Design', 'Mechanism'],
+        category: ['Design'],
+        modalId: 'dragon',
+        date: '2022-05-22'
+    },
+    {
+        id: 'column',
+        imgSrc: 'imgs/columnfinal.PNG',
+        title: 'Paper Water Lily Column',
+        year: '2021',
+        tags: ['Paper','Design','Nature Inspired'],
+        category: ['Design'],
+        modalId: 'column',
+        date: '2021-10-31'
+    },
+    {
+        id: 'pterodactyl',
+        imgSrc: 'imgs/pterodactyl.png',
+        title: 'Paper Flying Pterodactyl',
+        year: '2021',
+        tags: ['Paper', 'Design', 'Nature Inspired'],
+        category: ['Design'],
+        modalId: 'pterodactyl',
+        date: '2021-12-05'
+    },
+
+    // ------------- coding --------------------
+    {
+        id: 'frogvwasp',
+        imgSrc: 'imgs/frogvwasp/1.png',
+        title: 'Guardians of the Forest',
+        year: '2024',
+        tags: ['Game', 'Unity', 'Group Project','Coding'],
+        category: ['Coding','GameDevelopment'],
+        modalId: 'frogvwasp',
+        date: '2024-01-08'
+    },
+    {
+        id: 'farmerapp',
+        imgSrc: 'imgs/farmer app border.png',
+        title: 'Weather App for Farmers',
+        year: '2023',
+        tags: ['Preact', 'HTML, CSS, JS', 'Group project'],
+        category: ['Coding', 'UX/UI', 'Web'],
+        modalId: 'farmerapp',
+        date: '2023-04-13' 
+    },    
+    {
+        id: 'rewildingcampus',
+        imgSrc: 'imgs/cgp/7.png',
+        title: 'Rewilding Campus',
+        year: '2023',
+        tags: ['UX/UI','Group Project','Coding','Data Visualisation','Processing (Java)'],
+        category: ['UX/UI','Coding'],
+        modalId: 'rewildingcampus',
+        date: '2023-04-11'
+    },
+    {
+        id: 'takingcharge',
+        imgSrc: 'imgs/taking charge.png',
+        title: 'Taking Charge - Interactive Educational Website',
+        year: '2022',
+        tags: ['Coding', 'Website', 'Group Project', 'Interactive Design', 'Educational'],
+        category: ['Coding','UX/UI', 'Web'],
+        modalId: 'takingcharge',
+        date: '2022-12-16'
+    },
+    {
+        id: 'theatricalparrot',
+        imgSrc: 'imgs/parrot.png',
+        title: 'Parrot Theatrical Prop',
+        year: '2022',
+        tags: ['Arduino', 'Interactive','Group Project','Coding'],
+        category: ['Coding','Arduino'],
+        modalId: 'theatricalparrot',
+        date: '2022-12-17'
+    },
+    {
+        id: 'mastermind',
+        imgSrc: 'imgs/mastermind 2.png',
+        title: 'Mastermind Game',
+        year: '2022',
+        tags: ['Coding', 'Processing (Java)' ,'Game', 'Personal Project'],
+        category: ['Coding', 'GameDevelopment', 'Personal Project'],
+        modalId: 'mastermind',
+        date: '2022-07-11'
+    },
+    {
+        id: 'airlinesafety',
+        imgSrc: 'imgs/airlinesafety .png',
+        title: 'Airline Safety Data Visualisation',
+        year: '2021',
+        tags: ['Coding','Processing (Java)', 'Data Visualisation'],
+        category: ['Coding'],
+        modalId: 'airlinesafety',
+        date: '2021-12-15'
+    },
+    {
+        id: 'noughtscrosses',
+        imgSrc: 'imgs/noughts and crosses(1).png',
+        title: 'Noughts & Crosses',
+        year: '2021',
+        tags: ['Coding','Python','Game','Pygame'],
+        category: ['Coding','GameDevelopment'],
+        modalId: 'noughtscrosses',
+        date: '2021-08-24'
+    }, 
+    // ------------- blender ---------------
+    {
+        id: 'waspmodel',
+        imgSrc: '',
+        title: 'Low Poly Wasp',
+        year: '2024',
+        tags: ['Blender', '3D model'],
+        category: ['Blender'],
+        modalId: 'waspmodel',
+        date: '2024-01-05'
+    },
+    {
+        id: 'frogmodel',
+        imgSrc: '',
+        title: 'Low Poly Frog',
+        year: '2024',
+        tags: ['Blender', '3D model'],
+        category: ['Blender'],
+        modalId: 'frogmodel',
+        date: '2024-01-05'
+    },
+
+    // --------------- ART ------------------
+    // {
+    //     id: '',
+    //     imgSrc: '',
+    //     title: '',
+    //     year: '',
+    //     tags: [],
+    //     category: [''],
+    //     modalId: '',
+    //     date: ''
+    // },
+    // {
+    //     id: '',
+    //     imgSrc: '',
+    //     title: '',
+    //     year: '',
+    //     tags: [],
+    //     category: [''],
+    //     modalId: '',
+    //     date: ''
+    // },
+
+        
+    // Add other projects in a similar manner
+  ];
+
+  // ------------------- MODALS-----------------
+  const modals = [
+    // ----------------coding------------------
+  {
+    id: 'takingcharge',
+    title: 'Taking Charge - GCSE Physics Circuit Simulator',
+    date: 'Nov 2022 - Dec 2022',
+    description: 'An online circuit simulator website aimed at teaching GCSE Physics students about circuits. The user drags and drops circuit components into the circuit to complete the circuit and achieve the correct current.',
+    tryItLink: 'https://oliviastaniaszek.github.io/Taking-Charge/',
+    githubLink: 'https://github.com/OliviaStaniaszek/Taking-Charge',
+    images: [
+        { src: 'imgs/taking chage1.png', caption: '' },
+        { src: 'imgs/taking charge 2.png', caption: '' },
+        { src: 'imgs/taking charge 3.png', caption: '' },
+        { src: 'imgs/taking charge.png', caption: '' },
+    ]
+  },
+  {
+    id: 'airlinesafety',
+    title: 'Airline Safety - Data visualisation',
+    date: 'Dec 2021',
+    description: 'A data visualization made in Processing (Java) displaying data from a CSV in an interactive format.',
+    githubLink: 'https://github.com/OliviaStaniaszek/Airline-Safety-data-representation-coursework-AAP/tree/main',
+    images: [
+        { src: 'imgs/airlinesafety 2.png', caption: '' },
+        { src: 'imgs/airlinesafety 3.png', caption: '' },
+        { src: 'imgs/airlinesafety 1.png', caption: '' },
+        { src: 'imgs/airlinesafety .png', caption: '' },
+    ]
+  },
+  {
+    id: 'mastermind',
+    title: 'Mastermind Game',
+    date: 'Jul 2022',
+    description: 'Simple game of mastermind made in Processing (Java). User inputs guesses using numbers 1-6 and aims to guess in 5 guesses. Time taken is added to CSV for scoreboard',
+    githubLink: 'https://github.com/OliviaStaniaszek/Mastermind-game/tree/main',
+    images: [
+        { src: 'imgs/mastermind.png', caption: 'Main menu' },
+        { src: 'imgs/mastermind 2.png', caption: 'Game' },
+        { src: 'imgs/mastermind 3.png', caption: 'Scoreboard' }
+    ]
+  },
+  {
+    id: 'noughtscrosses',
+    title: 'Noughts & Crosses Game',
+    date: 'Aug 2021',
+    description: 'Simple 2 player game of Noughts & Crosses made using Python and Pygame. User input through number keys or mouse clicks.',
+    githubLink: 'https://github.com/OliviaStaniaszek/Noughts-Crosses-game',
+    images: [
+        { src: 'imgs/noughts and crosses(1).png', caption: 'Game Screen' },
+        { src: 'imgs/noughts and crosses(3).png', caption: 'Light Mode' },
+        { src: 'imgs/noughts and crosses(4).png', caption: 'How to play (light mode)' },
+    ]
+  },
+  {
+    id: 'theatricalparrot',
+    title: 'Parrot Theatrical Prop',
+    date: 'Nov 2022 - Dec 2022',
+    description: `
+        <h5 class="w3-opacity"><b>Brief</b></h5>
+        <p>Make a user controlled theatrical prop using an Arduino</p>
+        <h5 class="w3-opacity">Response</h5>
+        <p>A Macaw parrot with flapping wings and a speaker. User can control wing flapping speed and activate bird sounds with a button.</p>
+        <p>Full documentation can be found <a href="https://cio.eecs.qmul.ac.uk/portfolio/group-5-parrot-theatrical-prop/" class="w3-tag w3-red w3-round">here</a></p>
+        <a href="https://youtu.be/4MeMxqClBsU" class="w3-tag w3-red w3-round">Video</a>
+    `,
+    images: [
+        { src: 'imgs/parrot1.png', caption: 'Sketches' },
+        { src: 'imgs/parrot2.png', caption: 'Making' },
+        { src: 'imgs/parrot.png', caption: 'Final Design' },
+    ]
+  },
+  {
+    id: 'farmerapp',
+    title: 'Weather App for Farmers',
+    date: 'Mar 2023',
+    description: 'A weather app designed with farmers as the primary user group. Live weather data from the Open Weather API. Made using Preact, JavaScript, HTML and CSS',
+    githubLink: 'https://github.com/OliviaStaniaszek/farmer-weather-app',
+    images: [
+        { src: 'imgs/farmer app home.png', caption: 'Landing page' },
+        { src: 'imgs/farmer app weather long.png', caption: 'Weather page' },
+        { src: 'imgs/farmer app crops.png', caption: 'Crops page' },
+    ]
+  },
+  {
+    id: 'rewildingcampus',
+    title: 'Rewilding Campus',
+    date: 'Jan - Apr 2023',
+    description: `
+        <h5 class="w3-opacity"><b>Brief</b></h5>
+        <p>Make a green digital twin to encourage sustainability and stewardship on campus</p>
+        <h5 class="w3-opacity">Result</h5>
+        <p>
+            A data visualisation made in Processing (Java). The interactive visualisation would be displayed in a public space, such as the Zero Waste shop on campus. The visualisation shows the Queen Mary campus. The user can click filters to find the soil types of different areas on campus. Soil conditions were gathered using an Arduino. The user can look at different green spaces to see how many people planted flowers in that area by the number of flowers in the area, and see the soil condition based on the state of the flowers. They can choose which area they want to plant some flowers in, before taking some wildflower seeds provided and planting them in the selected area. With more time, we would have implemented this functionality on a 3D map instead of the 2D map we used. 
+        </p>
+        <h5 class="w3-opacity">Responsibilities</h5>
+        <p>
+            I was responsible for programming the visualisation in Processing. Others made the map, drew assets and integrated the Arduino.    
+        </p
+    `,
+    githubLink: 'https://github.com/OliviaStaniaszek/Wildflower-Creative-Group-Project',
+    images: [
+        { src: 'imgs/cgp/1.png', caption: 'initial prototype' },
+        { src: 'imgs/cgp/5.png', caption: 'test data visualisation' },
+        { src: 'imgs/cgp/8.png', caption: 'storyboard' },
+        { src: 'imgs/cgp/7.png', caption: '3D campus map view' },
+        { src: 'imgs/cgp/2.png', caption: '3D campus map view with soil filter' },
+        { src: 'imgs/cgp/3.png', caption: 'zone view with flower visualisation' },
+        { src: 'imgs/cgp/6.png', caption: '3D campus map in processing' },       
+    ]
+  },
+  {
+    id: 'frogvwasp',
+    title: 'Guardians of the Forest',
+    date: 'Oct 2023 - Jan 2024',
+    description: `
+        <p>A tower defense game made in Unity about frogs defending the forest from wasps</p>
+        <p>Features</p>
+        <ul>
+            <li>Procedurally generated map route and obstacles</li>
+            <li>Three unique level designs</li>
+            <li>Three Frog types with different abilities (Standard projectile, missile, 'sticky tongue' slowing effect)</li>
+            <li>Three enemy wasp types</li>
+            <li>Custom 3D models: frog, wasp, glowing flower</li>
+        </ul>
+        <h5 class="w3-opacity"><b>Responsibilities</b></h5>
+        <p>
+            Game mechanics implementation, level design, UI design, animations, camera, post-processing, lighting, particles, project management, planning and organisation
+        </p>
+        <a href="https://towerdefenceg.github.io/WaspVFrogBuilds/final/index.html" class="w3-tag w3-red w3-round">Play it here!</a>
+    `,
+    githubLink: 'https://github.com/TowerDefenceG/WaspVFrog',
+    images: [
+        { src: 'imgs/frogvwasp/1.png', caption: 'Animated start screen' },
+        { src: 'imgs/frogvwasp/2.png', caption: 'Map style level select' },
+        { src: 'imgs/frogvwasp/3.png', caption: 'Enchanted Forest ' },
+        { src: 'imgs/frogvwasp/4.png', caption: 'Luminescent Glade' },
+        { src: 'imgs/frogvwasp/5.png', caption: 'Wasp Queen\'s Lair'},
+
+    ]
+  },
+  // ---------------- design -------------------
+  {
+    id: 'drawingmodel',
+    title: 'Flexipose - Drawing Model',
+    date: 'Jan 2023 - April 2023',
+    description: ``,
+    images: [
+        { src: 'imgs/portfolio 2023/10.png', caption: '' },
+        { src: 'imgs/portfolio 2023/11.png', caption: '' },
+        { src: 'imgs/portfolio 2023/12.png', caption: '' },
+        { src: 'imgs/portfolio 2023/13.png', caption: '' },
+        { src: 'imgs/portfolio 2023/14.png', caption: '' },
+        { src: 'imgs/portfolio 2023/9.png', caption: '' },
+    ]
+  },
+  {
+    id: 'dragon',
+    title: 'Interlocking Wooden Dragon',
+    date: 'Jan 2022 - May 2022',
+    description: `
+        <h5 class="w3-opacity">Brief</h5>
+        <ul>
+            <li>Design a plain object which uses an interlocking mechanism</li>
+            <li>Made out of wood</li>
+            <li>Less than 300mm x 150mm x 150mm</li>
+        </ul>
+        <h5 class="w3-opacity">Response</h5>
+        <p>A carved dragon head made out of wood in two pieces, a skull and a head. Inspired by slide release buckles. Designed to be satisfying to play with and hold</p>
+    `,
+    images: [
+        { src: 'imgs/dragon 2.png', caption: 'Ideation and Mockups' },
+        { src: 'imgs/dragon 3.png', caption: 'Prototypes' },
+        { src: 'imgs/dragon 4.png', caption: 'Final Design' },
+        { src: 'imgs/dragon 1.png', caption: ''}
+    ]
+  },
+  {
+    id: 'column',
+    title: 'Paper Water Lily Column',
+    date: 'Sept 2021 - Oct 2022',
+    description: 
+        `<h5 class="w3-opacity"><b>Brief</b></h5>
+        <p>Make a three dimensional object, an artefact more like a piece of art, a personal response, expressing the idea of a column</p>
+        <h5 class="w3-opacity">Response</h5>
+        <p>A column made entirely out of paper and cardboard made to look like a water lily and lily pads. Inspired by Ancient Egyptian columns and the lily pads in my pond at home</p>
+        `,
+    images: [
+        { src: 'imgs/column1.PNG', caption: 'Ideation and Sketches' },
+        { src: 'imgs/column2.PNG', caption: 'Prototypes' },
+        { src: 'imgs/column3.PNG', caption: 'Final Design' },
+        { src: 'imgs/columnfinal.PNG', caption: '' },
+    ]
+  },
+  {
+    id: 'carpeggia',
+    title: 'Carpeggia - Lower body rain protection',
+    date: 'Oct 2022 - Dec 2022',
+    description: `
+        <h5 class="w3-opacity"><b>Brief</b></h5>
+        <p>Design an artefact to protect from wind and/or rain</p>
+        <h5 class="w3-opacity">Response</h5>
+        <p>A lower body garment made from old raincoats. Inspired by Japanese Samurai Armour. Aim to allow the user to maintain their stylish outfit, without having to cover it with a long raincoat.</p>
+    `,
+    images: [
+        { src: 'imgs/portfolio 2023/4.png', caption: '' },
+        { src: 'imgs/portfolio 2023/5.png', caption: '' },
+        { src: 'imgs/portfolio 2023/6.png', caption: '' },
+        { src: 'imgs/portfolio 2023/7.png', caption: '' },
+        { src: 'imgs/portfolio 2023/8.png', caption: '' },
+        { src: 'imgs/portfolio 2023/3.png', caption: '' },
+    ]
+  },
+  {
+    id: 'pterodactyl',
+    title: 'Paper Flying Pterodactyl',
+    date: 'Nov 2021 - Dec 2021',
+    description: `
+        <h5 class="w3-opacity"><b>Brief</b></h5>
+        <ul>
+            <li>Design a flying object. Your final product should have the quality of an off-the-shelf product</li>
+            <li>Made out of one sheet of A3 paper/ 2 A4 sheets</li>
+            <li>You can cut and bond but no power or heat is allowed </li>
+            <li>The final outcome must fly</li>
+        </ul>
+        <h5 class="w3-opacity">Response</h5>
+        <p>A DIY flying paper Pterodactyl to be sold at museum gift shops for children</p>
+    `,
+    images: [
+        { src: 'imgs/pterodactyl 2.png', caption: 'Mockups and Prototypes' },
+        { src: 'imgs/pterodactyl 3.png', caption: 'Packaging and flatpack' },
+        { src: 'imgs/pterodactyl.png', caption: 'Final Design' },
+    ]
+  },
+  {
+    id: 'portfolio22',
+    title: 'Year 1 Design Portfolio',
+    date: 'May 2022',
+    description: `
+        <div class="w3-container">
             <div class="w3-half w3-container w3-margin-bottom">
                 <img src="imgs/portfolio/Slide1.PNG" style="width:100%">
             </div>
@@ -971,91 +1072,250 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
             <div class="w3-half w3-container w3-margin-bottom">
                 <img src="imgs/portfolio/Slide31.PNG" style="width:100%">
             </div>
-            <!-- <div class="w3-half w3-container w3-margin-bottom">
-              <img src="imgs/portfolio/Slide.PNG" style="width:100%">
-            </div> -->
-          </div>
+            `,
+    images: []
+  },
+  {
+    id: 'portfolio23',
+    title: 'Year 2 Design Portfolio',
+    date: 'May 2023',
+    description: `<div class="w3-container">
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/1.png" style="width:100%">
+    </div>
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/2.png" style="width:100%">
+    </div>
+</div>
+<div class="w3-container">
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/3.png" style="width:100%">
+    </div>
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/4.png" style="width:100%">
+    </div>
+</div>
+<div class="w3-container">
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/5.png" style="width:100%">
+    </div>
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/6.png" style="width:100%">
+    </div>
+</div>
+<div class="w3-container">
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/7.png" style="width:100%">
+    </div>
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/8.png" style="width:100%">
+    </div>
+</div>
+<div class="w3-container">
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/9.png" style="width:100%">
+    </div>
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/10.png" style="width:100%">
+    </div>
+</div>
+<div class="w3-container">
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/11.png" style="width:100%">
+    </div>
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/12.png" style="width:100%">
+    </div>
+</div>
+<div class="w3-container">
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/13.png" style="width:100%">
+    </div>
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/14.png" style="width:100%">
+    </div>
+</div>
+<div class="w3-container">
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/15.png" style="width:100%">
+    </div>
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/16.png" style="width:100%">
+    </div>
+</div>
+<div class="w3-container">
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/17.png" style="width:100%">
+    </div>
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/18.png" style="width:100%">
+    </div>
+</div>
+<div class="w3-container">
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/19.png" style="width:100%">
+    </div>
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/20.png" style="width:100%">
+    </div>
+</div>
+<div class="w3-container">
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/21.png" style="width:100%">
+    </div>
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/22.png" style="width:100%">
+    </div>
+</div>
+<div class="w3-container">
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/23.png" style="width:100%">
+    </div>
+    <div class="w3-half w3-container w3-margin-bottom">
+        <img src="imgs/portfolio 2023/24.png" style="width:100%">
+    </div>
+</div>
+`,
+    images: []
+  },
+  // --------------- blender ------------------
+  {
+    id: 'waspmodel',
+    title: 'Low Poly Wasp',
+    date: 'Jan 2024',
+    description: ``,
+    githubLink: '',
+    images: [
+        { src: '', caption: '' },
+        { src: '', caption: '' },
+        { src: '', caption: '' },
+    ]
+  },
+  
+  {
+    id: '',
+    title: '',
+    date: '',
+    description: ``,
+    githubLink: '',
+    images: [
+        { src: '', caption: '' },
+        { src: '', caption: '' },
+        { src: '', caption: '' },
+    ]
+  },
+
+
+  // Add other projects in a similar manner
+];
+
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = 'block';
+  }
+}
+
+  const projectContainer = document.getElementById('projectContainer');
+
+  // open modal
+  
+
+  // Sort projects by date in descending order (most recent to oldest)
+  projects.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  function generateProjectHTML(project) {
+  const projectCategory = project.category || [];
+  return `
+    <div class="col-md-4 col-sm-6 w3-container w3-margin-bottom tab ${projectCategory.join(' ')}" onclick="openModal('${project.modalId}')">
+      <div class="w3-container project-item">
+        <div class="square-container">
+          <img src="${project.imgSrc}" class="w3-hover-grayscale project-image" alt="${project.title}">
+        </div>
+        <div class="w3-container w3-white">
+          <p><b>${project.title}</b><span class="w3-text-red"> (${project.year})</span></p>
+          <p>${project.tags.map(tag => `<span class="w3-tag">${tag}</span>`).join(' ')}</p>
+        </div>
       </div>
     </div>
-  </div>
+  `;
+}
 
-  <!-- farmer weather app 21-->
-  <div id="id21" class="w3-modal" style="padding-top: 2%;">
-    <div class="w3-modal-content">
+
+
+// Function to render projects
+function renderProjects() {
+  projectContainer.innerHTML = projects.map(generateProjectHTML).join('');
+  modals.forEach(modal => {
+    const modalHtml = generateModal(modal);
+    // Append modal HTML to the document (e.g., within a container)
+    // Make sure to replace 'modalsContainer' with the actual ID of your modal container
+    document.getElementById('modalsContainer').innerHTML += modalHtml;
+  });
+}
+
+// Call the renderProjects function to generate the initial content
+renderProjects();
+
+
+
+
+// filter projects show when tabs clicked
+function filterProjects(category) {
+  const projectElements = document.querySelectorAll('.tab');
+  projectElements.forEach(element => {
+    const projectCategories = element.classList;
+    if (category === 'All' || Array.from(projectCategories).includes(category)) {
+      element.style.display = 'block';
+    } else {
+      element.style.display = 'none';
+    }
+  });
+}
+
+// generates modal from modals array
+function generateModal(project) {
+  const imagesHTML = project.images
+    .map((image, index) => {
+      const imageClass = index % 2 === 0 ? 'w3-half' : 'w3-half w3-container w3-margin-bottom';
+      return `
+        <div class="${imageClass}">
+          <img src="${image.src}" style="width:100%">
+          <p>${image.caption || ''}</p>
+        </div>
+      `;
+    })
+    .join('');
+
+  const githubLinkHTML = project.githubLink
+    ? `<p>GitHub page can be found <a href="${project.githubLink}">here</a></p>`
+    : '';
+
+  const tryItLinkHTML = project.tryItLink
+    ? `<p><a href="${project.tryItLink}" class="w3-tag w3-red w3-round">Try it out!</a></p>`
+    : '';
+
+  return `
+    <div id="${project.id}" class="w3-modal" style="padding-top: 2%;">
+      <div class="w3-modal-content">
         <div class="w3-container w3-card w3-white w3-margin-bottom">
-            <span onclick="document.getElementById('id21').style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
-            <h2 class="w3-text-grey w3-padding-16">Weather app for Farmers</h2>
-            <h6 class="w3-text-red">Mar 2023</h6>
-            <div class="w3-container">
-            <p>A weather app designed with farmers as the primary user group. Live weather data from the Open Weather API. Made using Preact, JavaScript, HTML and CSS</p>
-            <p>GitHub page can be found <a href="https://github.com/OliviaStaniaszek/farmer-weather-app">here</a></p>
-            <div class="w3-third w3-container w3-margin-bottom">
-                <img src="imgs/farmer app home.png" style="width:100%">
-                <p>Landing page</p>
+          <span onclick="document.getElementById('${project.id}').style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
+          <h2 class="w3-text-grey w3-padding-16">${project.title}</h2>
+          <h6 class="w3-text-red">${project.date}</h6>
+          <div class="w3-container">
+            <p>${project.description}</p>
+            ${githubLinkHTML}
+            ${tryItLinkHTML}
+            <div class="w3-row-padding">
+              ${imagesHTML}
             </div>
-            <div class="w3-third w3-container w3-margin-bottom">
-                <img src="imgs/farmer app weather long.png" style="width:100%">
-                <p>Weather page</p>
-            </div>
-            <div class="w3-third w3-container w3-margin-bottom">
-                <img src="imgs/farmer app crops.png" style="width:100%">
-                <p>Crops page</p>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-    </div>
-  </div>
-
-
-  <!-- Footer -->
-  <footer class="w3-container w3-padding-8 w3-dark-grey">
-    <div class="w3-row-padding">
-        <h3>Contact me</h3>
-        <div class="w3-quarter">
-            <p><i class="fa fa-envelope w3-text-light-grey"></i> <a href="mailto:o.staniaszek3@gmail.com">o.staniaszek3@gmail.com</a></p>
-        </div>
-        <div class="w3-quarter">
-            <p><i class="fa fa-phone w3-text-light-grey"></i> +447838534255</p>
-        </div>
-        <div class="w3-quarter">
-            <p><i class="fa fa-linkedin w3-hover-opacity"></i> <a href="https://www.linkedin.com/in/olivia-staniaszek-b0b290227/?original_referer=">Olivia Staniaszek</a></p>
-        </div>
-        <div class="w3-quarter">
-            <p><i class="fa fa-github"></i> <a href="https://github.com/OliviaStaniaszek">OliviaStaniaszek</a></p>
-        </div>
-    </div>
-    </footer>
-
-<!-- End page content -->
-</div>
-
-
-<script>
-// Script to open and close sidebar
-function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
-}
- 
-function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
+  `;
 }
 
-// https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_tabulators_active 
-function openCity(evt, cityName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("city");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " w3-red";
-}
 
 </script>
 
