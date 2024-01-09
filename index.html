@@ -95,7 +95,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       </div>
 
       <div id="modalsContainer"></div>
-      
+      <div id="imageModalContainer"></div>
       
     
 
@@ -672,20 +672,20 @@ const projects = [
     // ------------- blender ---------------
     {
         id: 'waspmodel',
-        imgSrc: '',
+        imgSrc: 'imgs/frogvwasp/wasp yellow.png',
         title: 'Low Poly Wasp',
         year: '2024',
-        tags: ['Blender', '3D model'],
+        tags: ['Blender', '3D model','Animation'],
         category: ['Blender'],
         modalId: 'waspmodel',
         date: '2024-01-05'
     },
     {
         id: 'frogmodel',
-        imgSrc: '',
+        imgSrc: 'imgs/frogvwasp/orangefrog.png',
         title: 'Low Poly Frog',
         year: '2024',
-        tags: ['Blender', '3D model'],
+        tags: ['Blender', '3D model','Animation'],
         category: ['Blender'],
         modalId: 'frogmodel',
         date: '2024-01-05'
@@ -1183,30 +1183,55 @@ const projects = [
     id: 'waspmodel',
     title: 'Low Poly Wasp',
     date: 'Jan 2024',
-    description: ``,
-    githubLink: '',
+    description: `
+    <p>
+        Low poly stylized wasp made in blender.
+        Animated in Unity using shape keys.
+        Made for and used in my game 'Guardians of the Forest'.
+    </p>
+    <video width="360" height="360" controls>
+    <source src="imgs/frogvwasp/waspanimation.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+    `,
     images: [
-        { src: '', caption: '' },
-        { src: '', caption: '' },
-        { src: '', caption: '' },
+        { src: 'imgs/frogvwasp/wasp yellow.png', caption: '' },
+    ]
+  },
+  {
+    id: 'frogmodel',
+    title: 'Low Poly Frog',
+    date: 'Jan 2024',
+    description: `
+    <p>
+        Low poly frog made in blender.
+        Animated in Unity using shape keys.
+        Made for and used in my game 'Guardians of the Forest'.
+    </p>
+    <video width="360" height="360" controls>
+    <source src="imgs/frogvwasp/froganimation.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+    `,
+    images: [
+        { src: 'imgs/frogvwasp/orangefrog.png', caption: '' },
     ]
   },
   
-  {
-    id: '',
-    title: '',
-    date: '',
-    description: ``,
-    githubLink: '',
-    images: [
-        { src: '', caption: '' },
-        { src: '', caption: '' },
-        { src: '', caption: '' },
-    ]
-  },
+//   {
+//     id: '',
+//     title: '',
+//     date: '',
+//     description: ``,
+//     githubLink: '',
+//     images: [
+//         { src: '', caption: '' },
+//         { src: '', caption: '' },
+//         { src: '', caption: '' },
+//     ]
+//   },
 
 
-  // Add other projects in a similar manner
 ];
 
 function openModal(modalId) {
@@ -1217,9 +1242,7 @@ function openModal(modalId) {
 }
 
   const projectContainer = document.getElementById('projectContainer');
-
-  // open modal
-  
+ 
 
   // Sort projects by date in descending order (most recent to oldest)
   projects.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -1242,7 +1265,6 @@ function openModal(modalId) {
 }
 
 
-
 // Function to render projects
 function renderProjects() {
   projectContainer.innerHTML = projects.map(generateProjectHTML).join('');
@@ -1256,8 +1278,6 @@ function renderProjects() {
 
 // Call the renderProjects function to generate the initial content
 renderProjects();
-
-
 
 
 // filter projects show when tabs clicked
@@ -1280,7 +1300,7 @@ function generateModal(project) {
       const imageClass = index % 2 === 0 ? 'w3-half' : 'w3-half w3-container w3-margin-bottom';
       return `
         <div class="${imageClass}">
-          <img src="${image.src}" style="width:100%">
+          <img src="${image.src}" style="width:100%" onclick="openImageModal('${image.src}')">
           <p>${image.caption || ''}</p>
         </div>
       `;
@@ -1296,8 +1316,8 @@ function generateModal(project) {
     : '';
 
   return `
-    <div id="${project.id}" class="w3-modal" style="padding-top: 2%;">
-      <div class="w3-modal-content">
+    <div id="${project.id}" class="w3-modal" style="padding-top: 2%;" onclick="this.style.display='none'">
+      <div class="w3-modal-content" onclick="event.stopPropagation();">
         <div class="w3-container w3-card w3-white w3-margin-bottom">
           <span onclick="document.getElementById('${project.id}').style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
           <h2 class="w3-text-grey w3-padding-16">${project.title}</h2>
@@ -1314,6 +1334,37 @@ function generateModal(project) {
       </div>
     </div>
   `;
+}
+
+function generateImageModal(imageSrc){
+    return `
+    <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+    <div class="w3-modal " onclick="this.style.display='none'">
+        <img class="w3-modal-content" src="${imageSrc}">
+    </div>
+    `;
+}
+
+function openImageModal(imageSrc) {
+  const imageModalContainer = document.getElementById('imageModalContainer');
+
+  // Check if the container exists
+  if (!imageModalContainer) {
+    console.error('Image modal container not found.');
+    return;
+  }
+
+  // Generate the image modal HTML
+  const imageModalHTML = generateImageModal(imageSrc);
+
+  // Append the modal HTML to the container
+  imageModalContainer.innerHTML = imageModalHTML;
+
+  // Show the modal
+  const imageModal = imageModalContainer.querySelector('.w3-modal');
+  if (imageModal) {
+    imageModal.style.display = 'flex';
+  }
 }
 
 
