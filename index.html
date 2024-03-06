@@ -11,7 +11,9 @@
 
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
-
+html {
+  background-color: black;
+}
 .project-item {
   position: relative;
 }
@@ -64,7 +66,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:300px">
+<div class="w3-main w3-dark-gray" style="margin-left:300px">
 
   <!-- Header -->
   <header id="portfolio">
@@ -590,6 +592,16 @@ const projects = [
 
     // ------------- coding --------------------
     {
+        id: 'birdgame',
+        imgSrc: 'imgs/bird game/sightings.png',
+        title: 'Work in Progress: Location Based Mobile Game',
+        year: '2024',
+        tags: ['Game', 'Unity', 'Mobile', 'UX', 'Coding'],
+        category: ['Coding','GameDevelopment', 'UX/UI'],
+        modalId: 'birdgame',
+        date: '2024-05-20'
+    },
+    {
         id: 'frogvwasp',
         imgSrc: 'imgs/frogvwasp/1.png',
         title: 'Guardians of the Forest',
@@ -858,6 +870,36 @@ const projects = [
 
     ]
   },
+  {
+    id: 'birdgame',
+    title: 'Work in Progress: Location based mobile game',
+    date: 'Jan 2024 - May 2024',
+    description: `
+    <p>Final University project: A location based mobile game to encourage walking and wildlife awareness</p>
+    <p>Inspired by Pokemon Go and Pikmin Bloom. Developed in Unity using the Niantic Lightship API and iNaturalist data</p>
+    <p>Features</p>
+    <ul>
+      <li>Live location map using Lightship API</li>
+      <li>Bird data from nearby observations uploaded to iNaturalist</li>
+      <li>Distance tracking</li>
+      <li>Tap on trees for a chance to encounter a bird</li>
+      <li>Bird sightings page shows the birds you have encountered in the game</li>
+      <li>Birdopedia shows all the different species you have encountered. Tapping on a species provides more information</li>
+      <li>Walking data page shows graphical representation of the distances walked that week and month</li>
+      </ul>
+    <p>Open to beta testing in the near future</p> 
+    <p><b>This is a work in progress - images are not representative of the final product</b></p>
+    `,
+    //githubLink: 'https://github.com/TowerDefenceG/WaspVFrog',
+    images: [
+        { src: 'imgs/bird game/map.png', caption: 'Map screen - live location' },
+        { src: 'imgs/bird game/bird spotted.png', caption: 'Tapping a tree has a chance of encountering a bird' },
+        { src: 'imgs/bird game/sightings.png', caption: 'All the birds you have encountered' },
+        { src: 'imgs/bird game/birdopedia.png', caption: 'All the species you have encountered' },
+        { src: 'imgs/bird game/species.png', caption: 'Click on species for more info and photos' },
+        { src: 'imgs/bird game/walking.png', caption: 'Graphical representation of distance walked this week and month' },
+    ]
+  },
   // ---------------- design -------------------
   {
     id: 'drawingmodel',
@@ -1093,13 +1135,13 @@ function openModal(modalId) {
   const projectCategory = project.category || [];
   return `
     <div class="col-md-4 col-sm-6 w3-container w3-margin-bottom tab ${projectCategory.join(' ')}" onclick="openModal('${project.modalId}')">
-      <div class="w3-container project-item">
+      <div class="w3-container w3-black project-item">
         <div class="square-container">
           <img src="${project.imgSrc}" class="w3-hover-grayscale project-image" alt="${project.title}">
         </div>
-        <div class="w3-container w3-white">
+        <div class="w3-container w3-black">
           <p><b>${project.title}</b><span class="w3-text-red"> (${project.year})</span></p>
-          <p>${project.tags.map(tag => `<span class="w3-tag">${tag}</span>`).join(' ')}</p>
+          <p>${project.tags.map(tag => `<span class="w3-tag w3-dark-gray">${tag}</span>`).join(' ')}</p>
         </div>
       </div>
     </div>
@@ -1160,7 +1202,7 @@ function generateModal(project) {
   return `
     <div id="${project.id}" class="w3-modal" style="padding-top: 2%;" onclick="this.style.display='none'">
       <div class="w3-modal-content" onclick="event.stopPropagation();">
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <div class="w3-container w3-card w3-black w3-margin-bottom">
           <span onclick="document.getElementById('${project.id}').style.display='none'" class="w3-button w3-display-topright"><i class="fa fa-remove"></i></span>
           <h2 class="w3-text-grey w3-padding-16">${project.title}</h2>
           <h6 class="w3-text-red">${project.date}</h6>
